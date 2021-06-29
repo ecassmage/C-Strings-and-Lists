@@ -1,0 +1,44 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/cygdrive/e/Github/C/Strings/error.h
+stdlib.h
+-
+stdarg.h
+-
+
+/cygdrive/e/Github/C/Strings/list.h
+str.h
+/cygdrive/e/Github/C/Strings/str.h
+stdbool.h
+-
+stdarg.h
+-
+
+/cygdrive/e/Github/C/Strings/main.c
+stdio.h
+-
+stdlib.h
+-
+str.h
+/cygdrive/e/Github/C/Strings/str.h
+list.h
+/cygdrive/e/Github/C/Strings/list.h
+error.h
+/cygdrive/e/Github/C/Strings/error.h
+
+/cygdrive/e/Github/C/Strings/str.h
+stdio.h
+-
+stdlib.h
+-
+stdarg.h
+-
+error.h
+/cygdrive/e/Github/C/Strings/error.h
+
