@@ -4,7 +4,7 @@
 
 /**
  * @author Evan Morrison
- * @version 1.2.50
+ * @version 1.3.00
  * @since 1.1
  */
 
@@ -15,6 +15,7 @@
 #define STRINGS_LIST_H
 
 #include "str.h"
+#include "error.h"
 #include <stdbool.h>
 #include <stdarg.h>
 
@@ -69,6 +70,10 @@ void prints(list *ListPrint);
 
 
 
+/**
+ * Constructs a list.
+ * @return returns an empty constructed list
+ */
 list *List(){
     list *newList = (list*) malloc(sizeof(list));
     newList -> list = (element*) malloc(10 * sizeof(element));
@@ -77,6 +82,10 @@ list *List(){
     return newList;
 }
 
+/**
+ * Don't use this. just for manipulating the size of the list.
+ * @param this takes a list.
+ */
 void increaseDecreaseSize(list *this){
     if (maxLen(this) > 10 && (maxLen(this) / 15) > len(this)){
         // Go Down Size
@@ -93,12 +102,19 @@ void increaseDecreaseSize(list *this){
     }
 }
 
+/**
+ * Don't use this. Just fills up the lists elements with the required information.
+ * @param temp Takes an element memory address.
+ * @param type Takes a type.
+ * @param lis Takes a va_list. // Could probably use void* instead but meh.
+ */
 void fillElement(element *temp, type_t type, va_list lis){
     temp -> type = type;
     temp -> element = (void*) malloc(sizeof(void));
     switch(type){
         case INT:{
             int *num = (int*) malloc(sizeof(int));
+            if (num == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tint *num = (int*) malloc(sizeof(int));");
             *num = va_arg(lis, int);
             temp -> element = num;
             break;
@@ -106,6 +122,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case DOUBLE:{
             double *doub = (double*) malloc(sizeof(double));
+            if (doub == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tdouble *doub = (double*) malloc(sizeof(double));");
             *doub = va_arg(lis, double);
             temp -> element = doub;
             break;
@@ -113,6 +130,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case LDOUBLE:{
             long double *ldouble = (long double*) malloc(sizeof(long double));
+            if (ldouble == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tlong double *ldouble = (long double*) malloc(sizeof(long double));");
             *ldouble = va_arg(lis, double);
             temp -> element = ldouble;
             break;
@@ -120,6 +138,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case FLOAT:{
             float *flo = (float*) malloc(sizeof(float));
+            if (flo == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tfloat *flo = (float*) malloc(sizeof(float));");
             *flo = (float) va_arg(lis, double);
             temp -> element = flo;
             break;
@@ -137,6 +156,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case CHAR:{
             char *cha = (char*) malloc(sizeof(char));
+            if (cha == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *cha = (char*) malloc(sizeof(char));");
             *cha = (char) va_arg(lis, int);
             temp -> element = cha;
             break;
@@ -145,14 +165,15 @@ void fillElement(element *temp, type_t type, va_list lis){
         case CHARp:{
             char *tempoChar = va_arg(lis, char*);
             char *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));
+            if (chap == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));");
             int i = 0; do {chap[i] = tempoChar[i];i++;} while (tempoChar[i] != '\0');
             temp -> element = chap;
             break;
         }
 
         case BOOL:{
-
             bool *boo = (bool*) malloc(sizeof(bool));
+            if (boo == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));");
             *boo = (bool) va_arg(lis, int);
             temp -> element = boo;
             break;
@@ -168,12 +189,25 @@ void fillElement(element *temp, type_t type, va_list lis){
             break;
         }
 
+        case DEBUG:{
+            ERROR(2, 2, "\tvoid fillElement(element *temp, type_t type, va_list lis);\n\tERROR(2, 1, \"\\tvoid fillElement(element *temp, type_t type, va_list lis)\\n\\tcase DEBUG:\");",
+                  "\nI love this ANSI Color. Probably won't appear on most terminals/consoles but the fact it will sometimes show up is great\n");
+            break;
+        }
+
         default:{
             ERROR(2, 1, "void add(list *addToList, type_t type, void *ptr);\n");
         }
+
     }
 }
 
+/**
+ * Adds a something and adds it to the list.
+ * @param addToList takes the list wanted to receive new something.
+ * @param type takes a type.
+ * @param ... Takes a single argument but can take more (don't bother sending more, it is pointless and does nothing) and will add this to the list.
+ */
 void add(list *addToList, type_t type, ...){
     va_list lis;
     va_start(lis, type);
@@ -184,10 +218,14 @@ void add(list *addToList, type_t type, ...){
 }
 
 /**
- * Short form for delete, will delete last element
- * @param lis takes a list
+ * Deletes an element from list. Uses an index to find specified element. Will send a copy of deleted element by way of an element memory address.
+ * <p>
+ *      If you do not want to receive a copy then use {@link #delete(list*, unsigned)}
+ * </p>
+ * @param lis Takes a list.
+ * @param index takes an index.
+ * @return returns copied element.
  */
-
 element *deletec(list *lis, unsigned index){
     if (index < 0) index += lis -> len;
     if (index >= lis -> len || lis -> len < 0) return NULL;  // Catches Double Wrap Arounds', I don't like doubles, they seem dumm.;P
@@ -198,19 +236,45 @@ element *deletec(list *lis, unsigned index){
     increaseDecreaseSize(lis);
     return temp;
 }
+
+/**
+ * Deletes an element from list. Uses an index to find specified element.
+ * @param lis Takes a list.
+ * @param index takes an index.
+ */
 void delete(list *lis, unsigned index){
     free(deletec(lis, index) -> element);
 }
 
+/**
+ * Deletes the last element in the list.
+ * <p>
+ *      If you do not want to receive a copy then use {@link #del(list*)}
+ * </p>
+ * @param lis takes a list.
+ * @return returns deleted element
+ */
 element *delc(list *lis){
     element *temp = deletec(lis, len(lis) - 1); // Ta Gaa
     return temp;
 }
 
+/**
+ * Deletes the last element in the list.
+ * @param lis takes a list
+ */
 void del(list *lis){
     free(deletec(lis, len(lis)));
 }
 
+/**
+ * prints a list. Don't use as it takes an unnecessary boolean and if you send false through will print the list without a newline at the end.
+ * <p>
+ *      If you want to not have a newline at the end of the list, pass false through.
+ * </p>
+ * @param ListPrint Takes a list.
+ * @param newLine takes a boolean for if a newLine is wanted.
+ */
 void printList(list *ListPrint, bool newLine){
     printf("[");
     for (int i = 0; i < len(ListPrint); i++){
@@ -235,11 +299,17 @@ void printList(list *ListPrint, bool newLine){
     if(newLine) printf("\n");
 }
 
+/**
+ * Prints a list
+ * @param ListPrint takes a list to print.
+ */
 void prints(list *ListPrint){
     printList(ListPrint, true);
 }
 
-
+/**
+ * Helper Function. Just Call this for some information on all of the Functions I remember to talk about in here.
+ */
 void listHelp(){
     printf("////// Functions Below\n"
            "\n"

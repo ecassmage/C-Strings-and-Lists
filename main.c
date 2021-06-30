@@ -1,3 +1,9 @@
+/**
+ * @author Evan Morrison
+ * @version 1.3.00
+ * @since 1.0
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "str.h"
@@ -13,6 +19,9 @@ int main() {
     return 0;
 }
 
+/**
+ * I Use this to Test lists.
+ */
 void lists(){
     list *list1 = List();
     list *list2 = List();
@@ -28,6 +37,9 @@ void lists(){
     add(list1, DOUBLE, 101.111123122);
     add(list1, DOUBLE, 101.1);
     add(list1, LDOUBLE, 145646401.3453453);
+    add(list1, DEBUG, "DebugToTestERRORMessageFormat");
+
+    add(list1, INT, 2344234);
     for (int i = 0; i < 10; i++){
         add(list2, INT, 100 + i);
     }
@@ -39,6 +51,9 @@ void lists(){
     prints(list1);
 }
 
+/**
+ * I Use this to Test Strings and string arrays or str.
+ */
 void strings(){
     printf("Hello, World!\n");
     string *string4 = mkString("Hi Boi");
@@ -68,7 +83,7 @@ void strings(){
     printFull(string -> cont);
     printFull(string1 -> cont);
     printFull(string2 -> cont);
-    newReplace(str3, "HEll", "Evan Morrison");
+    replace(str3, "HEll", "Evan Morrison");
     printf("\n");
     printFull(str1);
     printFull(str2);
@@ -76,7 +91,7 @@ void strings(){
     printFull(string -> cont);
     printFull(string1 -> cont);
     printFull(string2 -> cont);
-    newReplace(str3, "Evan Morrison", "Bitch");
+    replace(str3, "Evan Morrison", "Bitch");
     append(string, CHAR, "Hello World");
     printf("\n");
     printFull(str1);

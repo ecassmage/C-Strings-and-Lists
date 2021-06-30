@@ -15,6 +15,8 @@ stdarg.h
 /cygdrive/e/Github/C-Strings-and-Lists/list.h
 str.h
 /cygdrive/e/Github/C-Strings-and-Lists/str.h
+error.h
+/cygdrive/e/Github/C-Strings-and-Lists/error.h
 stdbool.h
 -
 stdarg.h
