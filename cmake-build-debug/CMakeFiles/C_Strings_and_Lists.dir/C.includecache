@@ -15,9 +15,9 @@ stdarg.h
 /cygdrive/e/Github/C-Strings-and-Lists/list.h
 str.h
 /cygdrive/e/Github/C-Strings-and-Lists/str.h
-error.h
-/cygdrive/e/Github/C-Strings-and-Lists/error.h
 stdbool.h
+-
+stdlib.h
 -
 stdarg.h
 -
@@ -27,12 +27,26 @@ stdio.h
 -
 stdlib.h
 -
+error.h
+/cygdrive/e/Github/C-Strings-and-Lists/error.h
 str.h
 /cygdrive/e/Github/C-Strings-and-Lists/str.h
 list.h
 /cygdrive/e/Github/C-Strings-and-Lists/list.h
-error.h
-/cygdrive/e/Github/C-Strings-and-Lists/error.h
+string.h
+-
+printe.h
+/cygdrive/e/Github/C-Strings-and-Lists/printe.h
+
+/cygdrive/e/Github/C-Strings-and-Lists/printe.h
+stdio.h
+-
+str.h
+/cygdrive/e/Github/C-Strings-and-Lists/str.h
+list.h
+/cygdrive/e/Github/C-Strings-and-Lists/list.h
+stdarg.h
+-
 
 /cygdrive/e/Github/C-Strings-and-Lists/str.h
 stdio.h
@@ -41,6 +55,4 @@ stdlib.h
 -
 stdarg.h
 -
-error.h
-/cygdrive/e/Github/C-Strings-and-Lists/error.h
 

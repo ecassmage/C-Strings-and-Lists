@@ -4,7 +4,7 @@
 
 /**
  * @author Evan Morrison
- * @version 1.3.00
+ * @version 1.4.00
  * @since 1.0
  */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdarg.h>
-#include "error.h"
+//#include "error.h"
 #define N NULL  // I dunno a short form for NULL I guess. I Initially Thought This was an amazing idea but now I think it is stupid and am going to leave it here.
 
 /**
@@ -31,7 +31,8 @@ typedef enum{  // This is the Building Base of the Lists. Could have used char a
     BOOL,
     LIST,
     DEBUG,
-    null
+    null,
+    EMPTY_T  // Basically a Default NULL which isn't actually a NULL. So NULL can be used without limitations.
 } type_t;
 
 typedef struct{
@@ -53,6 +54,17 @@ char *enumFinder(type_t type){
         case null: return "null";
         default: return N;
     }
+}
+
+void errorString(unsigned num, unsigned Args, ...){
+    va_list lis;
+    va_start(lis, Args);
+#ifdef STRINGS_ERROR_H
+    ERROR(num, Args, lis);
+#endif
+    printf("\033[0;31m");
+    printf("We Caught an ERROR message in \"str.h\" but \"ERROR.h\" was not included so this message played.\n");
+    exit(253);
 }
 
 /// Creating String and Str START
@@ -284,7 +296,7 @@ void concatInt(string *String, int num){
  * @return returns char at specific index position.
  */
 char charAt(string *String, unsigned index){
-    if (index >= len(String)) ERROR(0, 3, index, len(String), "char charAt(string *String, unsigned index)");
+    if (index >= len(String)) errorString(0, 3, index, len(String), "char charAt(string *String, unsigned index)");
     return String -> string[index];
 }
 
@@ -304,7 +316,7 @@ char *getStr(string *String){
  * @return returns string at index position given.
  */
 string *get(str *String, unsigned index){
-    if (index >= len(String)) ERROR(0, 3, index, len(String), "string *get(str *String, unsigned index);");
+    if (index >= len(String)) errorString(0, 3, index, len(String), "string *get(str *String, unsigned index);");
     return &String -> cont[index];
 }
 
@@ -315,7 +327,7 @@ string *get(str *String, unsigned index){
  * @return returns char* at index position given.
  */
 char *getString(str *String, unsigned index){
-    if (index >= len(String)) ERROR(0, 3, index, len(String), "string *get(str *String, unsigned index);");
+    if (index >= len(String)) errorString(0, 3, index, len(String), "string *get(str *String, unsigned index);");
     return String -> cont[index].string;
 }
 
@@ -466,7 +478,7 @@ void append(str *array, type_t type, void *appendVoid){
             array -> cont[len(array)] = *((string*) appendVoid);
             break;
         default:
-            ERROR(1, 0, "Expected [CHAR, STRING] got: ", enumFinder(type), "\n\tvoid append(str *array, type_t type, void *appendVoid);\n");  // Error Message Generator
+            errorString(1, 0, "Expected [CHAR, STRING] got: ", enumFinder(type), "\n\tvoid append(str *array, type_t type, void *appendVoid);\n");  // Error Message Generator
             break;
     }
     array -> len++;
@@ -501,7 +513,7 @@ void appendChar(str *array, char *appendChar){
  */
 string *popAdv(str *array, unsigned index){
     if (index < 0) index += (int) len(array);
-    if (index >= len(array) || index < 0) ERROR(0, 3, index, len(array), "Negative Wrap-Around Error\n\tstring *pop(str *array, unsigned index)");
+    if (index >= len(array) || index < 0) errorString(0, 3, index, len(array), "Negative Wrap-Around Error\n\tstring *pop(str *array, unsigned index)");
     string *temp = (string*) malloc((len(getString(array, index)) + 1) * sizeof(string));
     concatSingle(temp, getString(array, index));
     for (index++; index < len(array); index++) array[index-1] = array[index];
@@ -560,31 +572,31 @@ int popString(str *array, string *word){
  * @param format
  * @param ...
  */
-void print(const char *format, ...){
-    va_list list;
-    va_start(list, format);
-    string *message = String();
-    for (int i = 0; format[i] != '\0'; i++){
-        if (format[i] == '%' && format[i-1] != '%' && format[i-1] != '\\'/* Probably won't work unless \\% not \% */) {
-            switch (format[i + 1]) {
-                case 'd':
-                    //concatInt(message, va_arg(list, int));  //itoa doesn't work, need to find another around this.
-                    break;
-                case 'c':
-                    concatSC(message, (char) va_arg(list, int));
-                    break;
-                case 's':
-                    concatSingle(message, va_arg(list, char*));
-                    break;
-                case 'p':
-                    concatSingle(message, va_arg(list, char*));
-                    break;
-                case 'a':
-                    break;
-            }
-        }
-    }
-}
+//void print(const char *format, ...){
+//    va_list list;
+//    va_start(list, format);
+//    string *message = String();
+//    for (int i = 0; format[i] != '\0'; i++){
+//        if (format[i] == '%' && format[i-1] != '%' && format[i-1] != '\\'/* Probably won't work unless \\% not \% */) {
+//            switch (format[i + 1]) {
+//                case 'd':
+//                    //concatInt(message, va_arg(list, int));  //itoa doesn't work, need to find another around this.
+//                    break;
+//                case 'c':
+//                    concatSC(message, (char) va_arg(list, int));
+//                    break;
+//                case 's':
+//                    concatSingle(message, va_arg(list, char*));
+//                    break;
+//                case 'p':
+//                    concatSingle(message, va_arg(list, char*));
+//                    break;
+//                case 'a':
+//                    break;
+//            }
+//        }
+//    }
+//}
 
 /// Input/Output END
 #endif //STRINGS_STR_H

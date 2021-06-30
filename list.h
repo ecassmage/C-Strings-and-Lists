@@ -4,7 +4,7 @@
 
 /**
  * @author Evan Morrison
- * @version 1.3.00
+ * @version 1.4.00
  * @since 1.1
  */
 
@@ -15,8 +15,8 @@
 #define STRINGS_LIST_H
 
 #include "str.h"
-#include "error.h"
 #include <stdbool.h>
+#include <stdlib.h>
 #include <stdarg.h>
 
 /// Structures
@@ -32,6 +32,17 @@ typedef struct{
 } list;
 /// Structures
 
+
+void errorList(unsigned num, unsigned Args, ...){
+    va_list lis;
+    va_start(lis, Args);
+#ifdef STRINGS_ERROR_H
+    ERROR(num, Args, lis);
+#endif
+    printf("\033[0;31m");
+    printf("We Caught an ERROR message in \"list.h\" but \"ERROR.h\" was not included so this message played.\n");
+    exit(253);
+}
 
 
 ////// Functions Below
@@ -79,6 +90,7 @@ list *List(){
     newList -> list = (element*) malloc(10 * sizeof(element));
     newList -> len = 0;
     newList -> CurrentSize = 10;
+    for (unsigned i = len(newList); i < maxLen(newList); i++) newList -> list[i].type = EMPTY_T;
     return newList;
 }
 
@@ -91,14 +103,15 @@ void increaseDecreaseSize(list *this){
         // Go Down Size
         for (int i = maxLen(this) - 1; i >= maxLen(this) / 10; i--) free(this -> list[i].element);
         this -> list = (element*) realloc(this -> list, (maxLen(this) / 10) * sizeof(element));
-        if (this -> list == NULL) ERROR(2, 1, "\tvoid increaseDecreaseSize(list *this);\n\tDeallocating Space Failure\n");
+        if (this -> list == NULL) errorList(2, 1, "\tvoid increaseDecreaseSize(list *this);\n\tDeallocating Space Failure\n");
         this -> CurrentSize /= 10;
     }
     else if (len(this) == maxLen(this)){
         // Go Up Size
         this -> list = (element*) realloc(this -> list, (maxLen(this) * 10) * sizeof(element));
-        if (this -> list == NULL) ERROR(2, 1, "\tvoid increaseDecreaseSize(list *this);\n\tAllocating Space Failure\n");
+        if (this -> list == NULL) errorList(2, 1, "\tvoid increaseDecreaseSize(list *this);\n\tAllocating Space Failure\n");
         this -> CurrentSize *= 10;
+        for (unsigned i = len(this); i < maxLen(this); i++) this -> list[i].type = EMPTY_T;
     }
 }
 
@@ -109,12 +122,13 @@ void increaseDecreaseSize(list *this){
  * @param lis Takes a va_list. // Could probably use void* instead but meh.
  */
 void fillElement(element *temp, type_t type, va_list lis){
+    if (temp -> type != EMPTY_T) free(temp -> element);
     temp -> type = type;
     temp -> element = (void*) malloc(sizeof(void));
     switch(type){
         case INT:{
             int *num = (int*) malloc(sizeof(int));
-            if (num == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tint *num = (int*) malloc(sizeof(int));");
+            if (num == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tint *num = (int*) malloc(sizeof(int));");
             *num = va_arg(lis, int);
             temp -> element = num;
             break;
@@ -122,7 +136,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case DOUBLE:{
             double *doub = (double*) malloc(sizeof(double));
-            if (doub == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tdouble *doub = (double*) malloc(sizeof(double));");
+            if (doub == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tdouble *doub = (double*) malloc(sizeof(double));");
             *doub = va_arg(lis, double);
             temp -> element = doub;
             break;
@@ -130,7 +144,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case LDOUBLE:{
             long double *ldouble = (long double*) malloc(sizeof(long double));
-            if (ldouble == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tlong double *ldouble = (long double*) malloc(sizeof(long double));");
+            if (ldouble == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tlong double *ldouble = (long double*) malloc(sizeof(long double));");
             *ldouble = va_arg(lis, double);
             temp -> element = ldouble;
             break;
@@ -138,7 +152,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case FLOAT:{
             float *flo = (float*) malloc(sizeof(float));
-            if (flo == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tfloat *flo = (float*) malloc(sizeof(float));");
+            if (flo == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tfloat *flo = (float*) malloc(sizeof(float));");
             *flo = (float) va_arg(lis, double);
             temp -> element = flo;
             break;
@@ -156,7 +170,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case CHAR:{
             char *cha = (char*) malloc(sizeof(char));
-            if (cha == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *cha = (char*) malloc(sizeof(char));");
+            if (cha == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *cha = (char*) malloc(sizeof(char));");
             *cha = (char) va_arg(lis, int);
             temp -> element = cha;
             break;
@@ -165,7 +179,7 @@ void fillElement(element *temp, type_t type, va_list lis){
         case CHARp:{
             char *tempoChar = va_arg(lis, char*);
             char *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));
-            if (chap == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));");
+            if (chap == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));");
             int i = 0; do {chap[i] = tempoChar[i];i++;} while (tempoChar[i] != '\0');
             temp -> element = chap;
             break;
@@ -173,7 +187,7 @@ void fillElement(element *temp, type_t type, va_list lis){
 
         case BOOL:{
             bool *boo = (bool*) malloc(sizeof(bool));
-            if (boo == NULL) ERROR(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));");
+            if (boo == NULL) errorList(2, 1, "\tvoid fillElement(element *temp, type_t type, va_list lis)\n\tchar *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));");
             *boo = (bool) va_arg(lis, int);
             temp -> element = boo;
             break;
@@ -190,13 +204,13 @@ void fillElement(element *temp, type_t type, va_list lis){
         }
 
         case DEBUG:{
-            ERROR(2, 2, "\tvoid fillElement(element *temp, type_t type, va_list lis);\n\tERROR(2, 1, \"\\tvoid fillElement(element *temp, type_t type, va_list lis)\\n\\tcase DEBUG:\");",
+            errorList(2, 2, "\tvoid fillElement(element *temp, type_t type, va_list lis);\n\terrorList(2, 1, \"\\tvoid fillElement(element *temp, type_t type, va_list lis)\\n\\tcase DEBUG:\");",
                   "\nI love this ANSI Color. Probably won't appear on most terminals/consoles but the fact it will sometimes show up is great\n");
             break;
         }
 
         default:{
-            ERROR(2, 1, "void add(list *addToList, type_t type, void *ptr);\n");
+            errorList(2, 1, "void add(list *addToList, type_t type, void *ptr);\n default:");
         }
 
     }
@@ -212,8 +226,25 @@ void add(list *addToList, type_t type, ...){
     va_list lis;
     va_start(lis, type);
     increaseDecreaseSize(addToList);
-    element *temp = &(addToList -> list[len(addToList)]);  // Easier Access
-    fillElement(temp, type, lis);
+    fillElement(&(addToList -> list[len(addToList)]), type, lis);
+    addToList -> len++;
+}
+
+/**
+ * More Advanced Version of {@link #add(list*, type_t, ...)} Where you can insert element into middle of the
+ * @param addToList
+ * @param index
+ * @param type
+ * @param ...
+ */
+void insert(list *addToList, int index, type_t type, ...){
+    if (index < 0) index += (int) addToList -> len;
+    if (index >= addToList -> len || addToList -> len < 0) errorList(0, index, len(addToList), "void insert(list *addToList, int index, type_t type, ...);");  // Catches Double Wrap Arounds', I don't like doubles, they seem dumm.;P
+    va_list lis;
+    va_start(lis, type);
+    increaseDecreaseSize(addToList);
+    for (unsigned i = len(addToList); index < i; i--) addToList -> list[i] = addToList -> list[i-1];
+    fillElement(&addToList -> list[index], type, lis);
     addToList -> len++;
 }
 
@@ -279,7 +310,7 @@ void printList(list *ListPrint, bool newLine){
     printf("[");
     for (int i = 0; i < len(ListPrint); i++){
         if (i != 0) printf(", ");
-        switch(ListPrint -> list[i].type){
+        switch(ListPrint -> list[i].type) {
             case INT:       printf("%d", *(int*) ListPrint -> list[i].element); break;
             case DOUBLE:    printf("%f", *(double*) ListPrint -> list[i].element); break;
             case LDOUBLE:   printf("%Lf", *(long double*) ListPrint -> list[i].element); break;
@@ -292,7 +323,7 @@ void printList(list *ListPrint, bool newLine){
             case LIST:      printList((list*) ListPrint -> list[i].element, false); break;
             case null:      printf("NULL"); break;
 
-            default:        ERROR(2, 1, "void add(list *addToList, type_t type, void *ptr);\n");
+            default:        errorList(1, 1, "\tvoid printList(list *ListPrint, bool newLine);\n");
         }
     }
     printf("]");

@@ -4,7 +4,7 @@
 // Totally Forgot to Add this to this Header. Woops. :)
 /**
  * @author Evan Morrison
- * @version 1.3.00
+ * @version 1.4.00
  * @since 1.0
  */
 
@@ -21,6 +21,7 @@
  *      0: Index out of Range
  *      1: Incorrect type_t used
  *      2: Failed to Allocate Space
+ *      253: Reserved for if This Header is not Enabled. Pointless to Say this here probably but worth Mentioning. You Can Still use this code but it will send the wrong message.
  *      254: Custom Error (Can be Customized Entirely but they need to all be char*)
  *      255: Unknown Error
  * </p>
@@ -28,9 +29,7 @@
  * @param Args Takes number of extra arguments to be sent over.
  * @param ... Takes all the Arguments
  */
-void ERROR(unsigned num, unsigned Args, ...){
-    va_list lis;
-    va_start(lis, Args);
+void ERROR(unsigned num, unsigned Args, va_list lis){
     printf("\033[0;31m");
     switch (num){
         case 0:
@@ -62,4 +61,9 @@ void ERROR(unsigned num, unsigned Args, ...){
     printf("\033[0m");  // I love ANSI Codes. So nice Did this in Java for one of my labs for some reason for the fun of it.
     exit((int) num);
 }
+
+//char *type_tConvert(type_t type){
+
+//}
+
 #endif //STRINGS_ERROR_H
