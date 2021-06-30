@@ -4,7 +4,7 @@
 
 /**
  * @author Evan Morrison
- * @version 1.1
+ * @version 1.2
  * @since 1.0
  */
 
@@ -19,7 +19,7 @@
 
 typedef enum{
     INT,
-    DOUBLE, FLOAT,
+    DOUBLE, FLOAT, LDOUBLE,
     STRING,
     STR,
     CHAR,

@@ -14,20 +14,29 @@ int main() {
 }
 
 void lists(){
-    list *list = List();
+    list *list1 = List();
+    list *list2 = List();
     listHelp();
-    add(list, STRING, mkString("Hello World"));
-    add(list, CHARp, "Hello");
-    add(list, INT, 100);
-    add(list, CHAR, 's');
-    add(list, INT, 101);
-    for (int i = 0; i < 100; i++){
-        add(list, INT, 100 + i);
+    add(list1, STRING, mkString("Hello World"));
+    add(list1, CHARp, "Hello");
+    add(list1, INT, 100);
+    add(list1, CHAR, 's');
+    add(list1, INT, 101);
+    add(list1, FLOAT, 101.1);  // Floats are BAAAAAAD.
+    add(list1, BOOL, true);  // Floats are BAAAAAAD.
+    add(list1, BOOL, false);  // Floats are BAAAAAAD.
+    add(list1, DOUBLE, 101.111123122);
+    add(list1, DOUBLE, 101.1);
+    add(list1, LDOUBLE, 145646401.3453453);
+    for (int i = 0; i < 10; i++){
+        add(list2, INT, 100 + i);
     }
-    printList(list);
-    int *num = delc(list) -> element;
-    printf("%d\n", *num);
-    printList(list);
+    prints(list1);
+    printf("This be Deleted -> %d\n", *(int*) delc(list1) -> element);
+    prints(list1);
+    add(list1, LIST, list2);
+    prints(list2);
+    prints(list1);
 }
 
 void strings(){

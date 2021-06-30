@@ -4,7 +4,7 @@
 
 /**
  * @author Evan Morrison
- * @version 1.1
+ * @version 1.2
  * @since 1.1
  */
 
@@ -61,7 +61,8 @@ void del(list *lis);
 /// Delete Functions
 
 /// Printers
-void printList(list *ListPrint);
+void printList(list *ListPrint, bool newLine);
+void prints(list *ListPrint);
 /// Printers
 
 ////// Functions Above
@@ -94,56 +95,82 @@ void increaseDecreaseSize(list *this){
 
 void fillElement(element *temp, type_t type, va_list lis){
     temp -> type = type;
+    temp -> element = (void*) malloc(sizeof(void));
     switch(type){
-        case INT:
-            temp -> element = (int*) malloc(sizeof(int));
+        case INT:{
             int *num = (int*) malloc(sizeof(int));
             *num = va_arg(lis, int);
             temp -> element = num;
             break;
-        case DOUBLE:
-            temp -> element = (double*) malloc(sizeof(double));
+        }
+
+        case DOUBLE:{
             double *doub = (double*) malloc(sizeof(double));
             *doub = va_arg(lis, double);
             temp -> element = doub;
             break;
-        case FLOAT:
-            temp -> element = (float*) malloc(sizeof(float));
+        }
+
+        case LDOUBLE:{
+            long double *ldouble = (long double*) malloc(sizeof(long double));
+            *ldouble = va_arg(lis, double);
+            temp -> element = ldouble;
+            break;
+        }
+
+        case FLOAT:{
             float *flo = (float*) malloc(sizeof(float));
             *flo = (float) va_arg(lis, double);
             temp -> element = flo;
             break;
-        case STRING:
-            temp -> element = (string*) malloc(sizeof(string));
+        }
+
+        case STRING:{
             temp -> element = va_arg(lis, string*);
             break;
-        case STR:
-            temp -> element = (str*) malloc(sizeof(str));
+        }
+
+        case STR:{
+
             break;
-        case CHAR:
-            temp -> element = (char*) malloc(sizeof(char));
+        }
+
+        case CHAR:{
             char *cha = (char*) malloc(sizeof(char));
             *cha = (char) va_arg(lis, int);
             temp -> element = cha;
             break;
-        case CHARp:
-            temp -> element = (char*) malloc(sizeof(char));
+        }
+
+        case CHARp:{
             char *tempoChar = va_arg(lis, char*);
             char *chap = (char*) malloc((strLen((char*) tempoChar) + 1) * sizeof(char));
             int i = 0; do {chap[i] = tempoChar[i];i++;} while (tempoChar[i] != '\0');
             temp -> element = chap;
             break;
-        case BOOL:
-            temp -> element = (bool*) malloc(sizeof(bool));
+        }
+
+        case BOOL:{
+
             bool *boo = (bool*) malloc(sizeof(bool));
             *boo = (bool) va_arg(lis, int);
             temp -> element = boo;
             break;
-        case null:
+        }
+
+        case LIST:{
+            temp -> element = va_arg(lis, list*);
+            break;
+        }
+
+        case null:{
             temp -> element = NULL;
             break;
-        default:
+        }
+
+        default:{
             ERROR(2, 1, "void add(list *addToList, type_t type, void *ptr);\n");
+        }
     }
 }
 
@@ -184,42 +211,32 @@ void del(list *lis){
     free(deletec(lis, len(lis)));
 }
 
-void printList(list *ListPrint){
+void printList(list *ListPrint, bool newLine){
     printf("[");
     for (int i = 0; i < len(ListPrint); i++){
         if (i != 0) printf(", ");
         switch(ListPrint -> list[i].type){
-            case INT:
-                printf("%d", *(int*) ListPrint -> list[i].element);
-                break;
-            case DOUBLE:
-                printf("%lf", *(double*) ListPrint -> list[i].element);
-                break;
-            case FLOAT:
-                printf("%f", *(float*) ListPrint -> list[i].element);
-                break;
-            case STRING:
-                printf("'%s'", getStr((string*) ListPrint -> list[i].element));
-                break;
-            case STR:
-                break;
-            case CHAR:
-                printf("'%c'", *(char*) ListPrint -> list[i].element);
-                break;
-            case CHARp:
-                printf("'%s'", (char*) ListPrint -> list[i].element);
-                break;
-            case BOOL:
-                printf("%d", *(bool*) ListPrint -> list[i].element);
-                break;
-            case null:
-                printf("NULL");
-                break;
-            default:
-                ERROR(2, 1, "void add(list *addToList, type_t type, void *ptr);\n");
+            case INT:       printf("%d", *(int*) ListPrint -> list[i].element); break;
+            case DOUBLE:    printf("%f", *(double*) ListPrint -> list[i].element); break;
+            case LDOUBLE:   printf("%Lf", *(long double*) ListPrint -> list[i].element); break;
+            case FLOAT:     printf("%f", *(float*) ListPrint -> list[i].element); break;
+            case STRING:    printf("'%s'", getStr((string*) ListPrint -> list[i].element)); break;
+            case STR:       break;
+            case CHAR:      printf("'%c'", *(char*) ListPrint -> list[i].element); break;
+            case CHARp:     printf("'%s'", (char*) ListPrint -> list[i].element); break;
+            case BOOL:      printf("%d", *(bool*) ListPrint -> list[i].element); break;
+            case LIST:      printList((list*) ListPrint -> list[i].element, false); break;
+            case null:      printf("NULL"); break;
+
+            default:        ERROR(2, 1, "void add(list *addToList, type_t type, void *ptr);\n");
         }
     }
-    printf("]\n");
+    printf("]");
+    if(newLine) printf("\n");
+}
+
+void prints(list *ListPrint){
+    printList(ListPrint, true);
 }
 
 
@@ -255,7 +272,7 @@ void listHelp(){
            "void printList(list *ListPrint);\n"
            "/// Printers\n"
            "\n"
-           "////// Functions Above"
+           "////// Functions Above\n"
            );
 }
 

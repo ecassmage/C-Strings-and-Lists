@@ -1,11 +1,4 @@
-C:\Users\evanm\AppData\Local\JetBrains\CLion2020.3\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make.exe -G "CodeBlocks - Unix Makefiles" /cygdrive/e/Github/C/Strings
--- The C compiler identification is GNU 10.2.0
--- Check for working C compiler: /usr/bin/cc
--- Check for working C compiler: /usr/bin/cc - works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
+C:\Users\evanm\AppData\Local\JetBrains\CLion2020.3\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make.exe -G "CodeBlocks - Unix Makefiles" /cygdrive/e/Github/C-Strings-and-Lists
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cygdrive/e/Github/C/Strings/cmake-build-debug
+-- Build files have been written to: /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug

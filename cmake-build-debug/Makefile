@@ -68,10 +68,10 @@ RM = /cygdrive/c/Users/evanm/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bi
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/e/Github/C/Strings
+CMAKE_SOURCE_DIR = /cygdrive/e/Github/C-Strings-and-Lists
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/e/Github/C/Strings/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C/Strings/cmake-build-debug/CMakeFiles /cygdrive/e/Github/C/Strings/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C/Strings/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named Strings
+# Target rules for targets named C_Strings_and_Lists
 
 # Build rule for target.
-Strings: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Strings
-.PHONY : Strings
+C_Strings_and_Lists: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 C_Strings_and_Lists
+.PHONY : C_Strings_and_Lists
 
 # fast build rule for target.
-Strings/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/build
-.PHONY : Strings/fast
+C_Strings_and_Lists/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/build
+.PHONY : C_Strings_and_Lists/fast
 
 main.o: main.c.o
 
@@ -149,7 +149,7 @@ main.o: main.c.o
 
 # target to build an object file
 main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/main.c.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/main.c.o
 .PHONY : main.c.o
 
 main.i: main.c.i
@@ -158,7 +158,7 @@ main.i: main.c.i
 
 # target to preprocess a source file
 main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/main.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/main.c.i
 .PHONY : main.c.i
 
 main.s: main.c.s
@@ -167,7 +167,7 @@ main.s: main.c.s
 
 # target to generate assembly for a file
 main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/main.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/main.c.s
 .PHONY : main.c.s
 
 # Help Target
@@ -178,7 +178,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Strings"
+	@echo "... C_Strings_and_Lists"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

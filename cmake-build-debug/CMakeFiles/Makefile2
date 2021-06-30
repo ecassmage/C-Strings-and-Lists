@@ -64,16 +64,16 @@ RM = /cygdrive/c/Users/evanm/AppData/Local/JetBrains/CLion2020.3/cygwin_cmake/bi
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/e/Github/C/Strings
+CMAKE_SOURCE_DIR = /cygdrive/e/Github/C-Strings-and-Lists
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/e/Github/C/Strings/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug
 
 #=============================================================================
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/Strings.dir/all
+all: CMakeFiles/C_Strings_and_Lists.dir/all
 
 .PHONY : all
 
@@ -83,36 +83,36 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/Strings.dir/clean
+clean: CMakeFiles/C_Strings_and_Lists.dir/clean
 
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/Strings.dir
+# Target rules for target CMakeFiles/C_Strings_and_Lists.dir
 
 # All Build rule for target.
-CMakeFiles/Strings.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/e/Github/C/Strings/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target Strings"
-.PHONY : CMakeFiles/Strings.dir/all
+CMakeFiles/C_Strings_and_Lists.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target C_Strings_and_Lists"
+.PHONY : CMakeFiles/C_Strings_and_Lists.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/Strings.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C/Strings/cmake-build-debug/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/Strings.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C/Strings/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/Strings.dir/rule
+CMakeFiles/C_Strings_and_Lists.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/C_Strings_and_Lists.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/C_Strings_and_Lists.dir/rule
 
 # Convenience name for target.
-Strings: CMakeFiles/Strings.dir/rule
+C_Strings_and_Lists: CMakeFiles/C_Strings_and_Lists.dir/rule
 
-.PHONY : Strings
+.PHONY : C_Strings_and_Lists
 
 # clean rule for target.
-CMakeFiles/Strings.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Strings.dir/build.make CMakeFiles/Strings.dir/clean
-.PHONY : CMakeFiles/Strings.dir/clean
+CMakeFiles/C_Strings_and_Lists.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/clean
+.PHONY : CMakeFiles/C_Strings_and_Lists.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.
