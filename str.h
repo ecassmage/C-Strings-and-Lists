@@ -4,7 +4,7 @@
 
 /**
  * @author Evan Morrison
- * @version 1.2
+ * @version 1.2.50
  * @since 1.0
  */
 

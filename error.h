@@ -1,6 +1,12 @@
 //
 // Created by evanm on 2021-06-28.
 //
+// Totally Forgot to Add this to this Header. Woops. :)
+/**
+ * @author Evan Morrison
+ * @version 1.2.50
+ * @since 1.0
+ */
 
 #ifndef STRINGS_ERROR_H
 #define STRINGS_ERROR_H
