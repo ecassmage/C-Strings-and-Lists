@@ -143,32 +143,32 @@ C_Strings_and_Lists/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/build
 .PHONY : C_Strings_and_Lists/fast
 
-main.o: main.c.o
+tester.o: tester.c.o
 
-.PHONY : main.o
+.PHONY : tester.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/main.c.o
-.PHONY : main.c.o
+tester.c.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/tester.c.o
+.PHONY : tester.c.o
 
-main.i: main.c.i
+tester.i: tester.c.i
 
-.PHONY : main.i
+.PHONY : tester.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/main.c.i
-.PHONY : main.c.i
+tester.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/tester.c.i
+.PHONY : tester.c.i
 
-main.s: main.c.s
+tester.s: tester.c.s
 
-.PHONY : main.s
+.PHONY : tester.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/main.c.s
-.PHONY : main.c.s
+tester.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/C_Strings_and_Lists.dir/build.make CMakeFiles/C_Strings_and_Lists.dir/tester.c.s
+.PHONY : tester.c.s
 
 # Help Target
 help:
@@ -179,9 +179,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... C_Strings_and_Lists"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... tester.o"
+	@echo "... tester.i"
+	@echo "... tester.s"
 .PHONY : help
 
 

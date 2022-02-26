@@ -77,27 +77,27 @@ include CMakeFiles/C_Strings_and_Lists.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/C_Strings_and_Lists.dir/flags.make
 
-CMakeFiles/C_Strings_and_Lists.dir/main.c.o: CMakeFiles/C_Strings_and_Lists.dir/flags.make
-CMakeFiles/C_Strings_and_Lists.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/C_Strings_and_Lists.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/C_Strings_and_Lists.dir/main.c.o   -c /cygdrive/e/Github/C-Strings-and-Lists/main.c
+CMakeFiles/C_Strings_and_Lists.dir/tester.c.o: CMakeFiles/C_Strings_and_Lists.dir/flags.make
+CMakeFiles/C_Strings_and_Lists.dir/tester.c.o: ../tester.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/C_Strings_and_Lists.dir/tester.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/C_Strings_and_Lists.dir/tester.c.o   -c /cygdrive/e/Github/C-Strings-and-Lists/tester.c
 
-CMakeFiles/C_Strings_and_Lists.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/C_Strings_and_Lists.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/e/Github/C-Strings-and-Lists/main.c > CMakeFiles/C_Strings_and_Lists.dir/main.c.i
+CMakeFiles/C_Strings_and_Lists.dir/tester.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/C_Strings_and_Lists.dir/tester.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /cygdrive/e/Github/C-Strings-and-Lists/tester.c > CMakeFiles/C_Strings_and_Lists.dir/tester.c.i
 
-CMakeFiles/C_Strings_and_Lists.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/C_Strings_and_Lists.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/e/Github/C-Strings-and-Lists/main.c -o CMakeFiles/C_Strings_and_Lists.dir/main.c.s
+CMakeFiles/C_Strings_and_Lists.dir/tester.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/C_Strings_and_Lists.dir/tester.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /cygdrive/e/Github/C-Strings-and-Lists/tester.c -o CMakeFiles/C_Strings_and_Lists.dir/tester.c.s
 
 # Object files for target C_Strings_and_Lists
 C_Strings_and_Lists_OBJECTS = \
-"CMakeFiles/C_Strings_and_Lists.dir/main.c.o"
+"CMakeFiles/C_Strings_and_Lists.dir/tester.c.o"
 
 # External object files for target C_Strings_and_Lists
 C_Strings_and_Lists_EXTERNAL_OBJECTS =
 
-C_Strings_and_Lists.exe: CMakeFiles/C_Strings_and_Lists.dir/main.c.o
+C_Strings_and_Lists.exe: CMakeFiles/C_Strings_and_Lists.dir/tester.c.o
 C_Strings_and_Lists.exe: CMakeFiles/C_Strings_and_Lists.dir/build.make
 C_Strings_and_Lists.exe: CMakeFiles/C_Strings_and_Lists.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable C_Strings_and_Lists.exe"

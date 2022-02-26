@@ -6,11 +6,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "error.h"  // Activates ERROR messages for str.h and list.h Should be included before either for this to work since
-#include "str.h"
-#include "list.h"
+//#include <stdbool.h>
+#include "Olderror.h"  // Activates ERROR messages for str.h and list.h Should be included before either for this to work since
+//#include "str.h"
+//#include "list.h"
 #include <string.h>
-#include "printe.h" // This is separate for ease of coding will be merged probably later
+//#include "../list.h"
+//#include "printe.h" // This is separate for ease of coding will be merged probably later
 
 
 void printE();
@@ -33,11 +35,6 @@ int main() {/*
     return 0;
 }
 
-void printE(){
-    printf("%s\n", convertIntToChar(155));
-    printf("%s\n", convertIntToChar(-155));
-    printf("%s\n", convertDoubleToChar(155.1412124));
-}
 /**
  * I Use this to Test lists.
  */
@@ -51,8 +48,8 @@ void lists(){
     add(list1, CHAR, 's');
     add(list1, INT, 101);
     add(list1, FLOAT, 101.1);  // Floats are BAAAAAAD.
-    add(list1, BOOL, true);  // Floats are BAAAAAAD.
-    add(list1, BOOL, false);  // Floats are BAAAAAAD.
+    add(list1, BOOL, 1);  // Floats are BAAAAAAD.
+    add(list1, BOOL, 0);  // Floats are BAAAAAAD.
     add(list1, DOUBLE, 101.111123122);
     add(list1, DOUBLE, 101.1);
     add(list1, LDOUBLE, 145646401.3453453);
@@ -71,7 +68,10 @@ void lists(){
     insert(list2, 3, CHARp, "Hello");
     prints(list1);
     print("This is My Test I have Proposed: %d, %c, %lf, %l\n", 100, 'c', 10.154545, list1);
-    print("This is My Test I have Proposed: %d, %c, %lf, %l", 100, 'c', 10.154545, list1);
+    print("This is My Test I have Proposed: %d, %c, %lf, %l\n", 100, 'c', 10.154545, list1);
+    printt("This is My Test I have Proposed: %d, %c, %lf, %l\n", 100, 'c', 10.154545, list1);
+    printf("(int)%%d, %d\n", 100);
+    print("%td, %tl\n", 100, list1);
 }
 
 /**
@@ -83,15 +83,9 @@ void strings(){
     string *str1 = newString(null, N);
     string *str2 = newString(CHAR, "HEllO");
     string *str3 = String();
-    str *string = Str(null, N);
-    str *string1 = Str(CHAR, "HelloBoi");
-    str *string2 = Str(STRING, string4);
     printFull(str1);
     printFull(str2);
     printFull(str3);
-    printFull(string -> cont);
-    printFull(string1 -> cont);
-    printFull(string2 -> cont);
     //printf("%d, %d %d\n", len(str1), len(string), len(string -> cont));
     //printf("%d, %d, %d\n", len(str2), len(string1), len(string1 -> cont));
     //printf("%d, %d, %d\n", len(str3), len(string2), len(string2 -> cont));
@@ -103,26 +97,16 @@ void strings(){
     printFull(str1);
     printFull(str2);
     printFull(str3);
-    printFull(string -> cont);
-    printFull(string1 -> cont);
-    printFull(string2 -> cont);
     replace(str3, "HEll", "Evan Morrison");
     printf("\n");
     printFull(str1);
     printFull(str2);
     printFull(str3);
-    printFull(string -> cont);
-    printFull(string1 -> cont);
-    printFull(string2 -> cont);
     replace(str3, "Evan Morrison", "Bitch");
-    append(string, CHAR, "Hello World");
     printf("\n");
     printFull(str1);
     printFull(str2);
     printFull(str3);
-    printFull(&string -> cont[0]);
-    printFull(&string1 -> cont[0]);
-    printFull(&string2 -> cont[0]);
     //printf("\n%d, %d\n", len(str1), len(string));
     //printf("%d, %d, %d\n", len(str2), len(string1), len(string1 -> cont));
     //printf("%d, %d, %d\n", len(str3), len(string2), len(string2 -> cont));

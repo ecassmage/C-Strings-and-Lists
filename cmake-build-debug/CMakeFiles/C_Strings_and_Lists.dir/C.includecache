@@ -13,11 +13,11 @@ stdarg.h
 -
 
 /cygdrive/e/Github/C-Strings-and-Lists/list.h
-str.h
-/cygdrive/e/Github/C-Strings-and-Lists/str.h
-stdbool.h
+string.h
 -
 stdlib.h
+-
+stdbool.h
 -
 stdarg.h
 -
@@ -34,18 +34,6 @@ str.h
 list.h
 /cygdrive/e/Github/C-Strings-and-Lists/list.h
 string.h
--
-printe.h
-/cygdrive/e/Github/C-Strings-and-Lists/printe.h
-
-/cygdrive/e/Github/C-Strings-and-Lists/printe.h
-stdio.h
--
-str.h
-/cygdrive/e/Github/C-Strings-and-Lists/str.h
-list.h
-/cygdrive/e/Github/C-Strings-and-Lists/list.h
-stdarg.h
 -
 
 /cygdrive/e/Github/C-Strings-and-Lists/str.h

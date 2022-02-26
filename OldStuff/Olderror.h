@@ -8,8 +8,8 @@
  * @since 1.0
  */
 
-#ifndef ERROR_H
-#define ERROR_H
+#ifndef STRINGS_ERROR_H
+#define STRINGS_ERROR_H
 
 #include <stdlib.h>
 #include <stdarg.h>
@@ -72,4 +72,4 @@ void ERROR(unsigned num, unsigned Args, va_list lis){
 
 //}
 
-#endif //ERROR_H
+#endif //STRINGS_ERROR_H

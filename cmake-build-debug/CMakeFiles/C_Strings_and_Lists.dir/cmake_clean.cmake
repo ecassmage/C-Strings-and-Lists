@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/C_Strings_and_Lists.dir/main.c.o"
+  "CMakeFiles/C_Strings_and_Lists.dir/tester.c.o"
   "C_Strings_and_Lists.exe"
   "C_Strings_and_Lists.pdb"
   "libC_Strings_and_Lists.dll.a"

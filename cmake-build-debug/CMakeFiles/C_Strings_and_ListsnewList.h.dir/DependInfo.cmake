@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/cygdrive/e/Github/C-Strings-and-Lists/tester.c" "/cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles/C_Strings_and_Lists.dir/tester.c.o"
+  "/cygdrive/e/Github/C-Strings-and-Lists/tester.c" "/cygdrive/e/Github/C-Strings-and-Lists/cmake-build-debug/CMakeFiles/C_Strings_and_ListsnewList.h.dir/tester.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

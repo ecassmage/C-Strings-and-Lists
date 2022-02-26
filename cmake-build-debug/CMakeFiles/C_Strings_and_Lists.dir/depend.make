@@ -4,6 +4,5 @@
 CMakeFiles/C_Strings_and_Lists.dir/main.c.o: ../error.h
 CMakeFiles/C_Strings_and_Lists.dir/main.c.o: ../list.h
 CMakeFiles/C_Strings_and_Lists.dir/main.c.o: ../main.c
-CMakeFiles/C_Strings_and_Lists.dir/main.c.o: ../printe.h
 CMakeFiles/C_Strings_and_Lists.dir/main.c.o: ../str.h
 

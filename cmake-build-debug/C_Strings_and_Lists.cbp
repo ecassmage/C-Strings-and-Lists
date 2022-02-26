@@ -74,10 +74,16 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/main.c">
+		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/error.h">
 			<Option target="C_Strings_and_Lists"/>
 		</Unit>
-		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/printe.h">
+		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/list.h">
+			<Option target="C_Strings_and_Lists"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/str.h">
+			<Option target="C_Strings_and_Lists"/>
+		</Unit>
+		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/tester.c">
 			<Option target="C_Strings_and_Lists"/>
 		</Unit>
 		<Unit filename="/cygdrive/e/Github/C-Strings-and-Lists/CMakeLists.txt">

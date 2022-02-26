@@ -1,0 +1,1 @@
+/usr/bin/cc -g  -Wl,--enable-auto-import CMakeFiles/C_Strings_and_ListsnewList.h.dir/tester.c.o  -o C_Strings_and_ListsnewList.h.exe -Wl,--out-implib,libC_Strings_and_ListsnewList.h.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
